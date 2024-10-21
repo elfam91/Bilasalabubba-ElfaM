@@ -1,0 +1,43 @@
+class Product {
+  final String name;
+  final String model;
+  final int year;
+  final String color;
+  final String fuelType;
+  final String bodyType;
+
+  Product(this.name, this.model, this.year, this.color, this.fuelType, this.bodyType);
+
+  @override
+  String toString() => 'Product(name: $name, model: $model, year: $year, color: $color, fuelType: $fuelType, bodyType: $bodyType)';
+}
+
+void main() {
+  List<Product> products = [
+    Product('land rover', 'defender', 2007, 'black', 'diesel', 'jeep'),
+    Product('land rover', 'discovery', 2016, 'brown', 'diesel', 'jeep'),
+    Product('polestar', 'two', 2024, 'white', 'electric', 'family car'),
+    Product('polestar', 'three', 2021, 'gray', 'electric', 'family car'),
+    Product('subaru', 'forrester', 2020, 'red', 'diesel', 'suv'),
+    Product('subaru', 'outback', 2022, 'white', 'diesel', 'suv'),
+    Product('mercedes', 'eqc400', 2022, 'copper', 'diesel', 'family car'),
+    Product('mercedes', 'vito116', 2011, 'black', 'diesel', 'family car'),
+  ];
+
+//FIND PRODUCT BY NAME OR MODEL
+  String searchTerm = "three"; // or assign a model name to search for
+  Product? foundProduct;
+  try {
+    foundProduct = products.firstWhere((product) =>
+    product.name.toLowerCase() == searchTerm.toLowerCase() ||
+        product.model.toLowerCase() == searchTerm.toLowerCase());
+  } catch (e) {
+    foundProduct = null;
+  }
+
+  if(foundProduct != null){
+    print(foundProduct);
+  } else{
+    print('Product not found');
+  }
+}
